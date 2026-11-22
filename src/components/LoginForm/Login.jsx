@@ -9,6 +9,7 @@ const FIELDS = [
 function Login() {
   // 1️⃣ DATA
   const [formData, setFormData] = useState({ email: "", password: "" });
+  const [error, setError] = useState("");
 
   // 2️⃣ ACTIONS
   function handleChange(event) {
@@ -18,6 +19,13 @@ function Login() {
 
   function handleSubmit(event) {
     event.preventDefault();
+
+    if (formData.password.length < 6) {
+      setError("Password must be at least 6 characters.");
+      return; // stop here
+    }
+
+    setError(""); // clear any old error
     console.log("Email:", formData.email);
     console.log("Password:", formData.password);
   }
@@ -36,6 +44,8 @@ function Login() {
           onChange={handleChange}
         />
       ))}
+
+      {error && <p style={{ color: "red" }}>{error}</p>}
 
       <button type="submit">Log in</button>
     </form>
