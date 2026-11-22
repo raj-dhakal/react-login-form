@@ -1,13 +1,20 @@
 import { useState } from "react";
 
 function Login() {
-  // 1️⃣ DATA: one state per input, both start empty
+  // 1️⃣ DATA
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  // 2️⃣ ACTIONS
+  function handleSubmit(event) {
+    event.preventDefault();
+    console.log("Email:", email);
+    console.log("Password:", password);
+  }
+
   // 3️⃣ UI
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <label htmlFor="email">Email</label>
       <input
         id="email"
