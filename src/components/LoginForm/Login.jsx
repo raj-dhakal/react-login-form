@@ -1,4 +1,5 @@
 import { useState } from "react";
+import FormField from "../FormField/FormField";
 
 function Login() {
   // 1️⃣ DATA
@@ -15,18 +16,18 @@ function Login() {
   // 3️⃣ UI
   return (
     <form onSubmit={handleSubmit}>
-      <label htmlFor="email">Email</label>
-      <input
+      <FormField
         id="email"
+        label="Email"
         type="email"
         placeholder="you@example.com"
         value={email}
         onChange={(event) => setEmail(event.target.value)}
       />
 
-      <label htmlFor="password">Password</label>
-      <input
+      <FormField
         id="password"
+        label="Password"
         type="password"
         placeholder="Enter your password"
         value={password}
