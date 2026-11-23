@@ -6,7 +6,7 @@ const FIELDS = [
   { id: "password", label: "Password", type: "password", placeholder: "Enter your password" },
 ];
 
-function Login() {
+function Login({ onLogin }) {
   // 1️⃣ DATA
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [error, setError] = useState("");
@@ -25,9 +25,8 @@ function Login() {
       return; // stop here
     }
 
-    setError(""); // clear any old error
-    console.log("Email:", formData.email);
-    console.log("Password:", formData.password);
+    setError("");                        // clear any old error
+    onLogin({ email: formData.email });  // tell App someone logged in
   }
 
   // 3️⃣ UI
